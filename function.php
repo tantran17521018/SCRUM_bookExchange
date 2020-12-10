@@ -3,7 +3,7 @@ session_start();
 include "connection.php";
 
 function get_all_book($conn) {
-    $sql = "SELECT USERID,BOOKID,TITLE,PUBLISHER FROM books WHERE STATUS='available' ORDER BY TITLE DESC";
+    $sql = "SELECT books.USERID,books.BOOKID,user.NAME,books.TITLE,books.PUBLISHER FROM books join user on books.USERID = user.ID WHERE STATUS='available' ORDER BY TITLE DESC";
     $result = mysqli_query($conn, $sql);
     return $result;
 }
